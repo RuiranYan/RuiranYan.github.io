@@ -257,7 +257,18 @@ if (asideStatus !== undefined) {
 
   }
 }
-window.addEventListener('load',()=> {preloader.endLoading()})</script><div class="js-pjax"><script>function loadValine () {
+window.addEventListener('load',()=> {preloader.endLoading()})</script><div class="js-pjax"><script>if (document.getElementsByClassName('mermaid').length) {
+  if (window.mermaidJsLoad) mermaid.init()
+  else {
+    $.getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js', function () {
+      window.mermaidJsLoad = true
+      mermaid.initialize({
+        theme: 'default',
+      })
+      false && mermaid.init()
+    })
+  }
+}</script><script>function loadValine () {
   function initValine () {
     let initData = {
       el: '#vcomment',
