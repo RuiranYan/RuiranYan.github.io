@@ -200,6 +200,24 @@ tags:
 
 答案是利用git的分支系统，这样每次打开不一样的电脑，只需要进行简单的配置和在github上把文件同步下来，就可以无缝操作了。具体方法可见该[知乎问题](https://www.zhihu.com/question/21193762)。原理机制与操作方式都有详细的介绍。
 
+这里我也根据自己的使用经验进行一些介绍。
+
+本人有个manjaro系统和一个win10系统，之前将manjaro 当作自己的一个工作区，所有的东西包括blog文件都放在了manjaro上，现在想在win10能够同步，于是就有了如下操作。
+
+步骤如下：
+
+1. 在原系统给xxx.github.io仓库建一个分支，并设为默认分支。
+2. 随便一个目录下，git clone这个仓库。
+3. 进入克隆下来的仓库，删除.git文件夹以外的所有内容（包括隐藏文件）。
+4. git add -A ，git commit -m "--"，git push origin hexo把所有变化更新到远程。
+5. 将.git文件夹复制到本地blog目录下，可以直接删除clone的仓库了。
+6. 删掉themes文件夹中所有主题的.git .gitignore。
+7. cd 到博客目录，git add -A ，git commit -m "--"，git push origin hexo，将博客目录下所有文件更新到 hexo 分支。**至此原系统上的操作结束。**
+8. **在新系统上**，先安装好node.js git hexo环境，添加ssh key
+9. 选好要安装的目录 git clone远程仓库
+10. cd 到博客目录，npm install hexo，然后hexo init即可。
+11. **以后无论在哪台电脑上，更新以及提交博客，依次执行，git pull，git add -A ，git commit -m "--"，git push origin hexo，hexo clean && hexo g && hexo d 即可。**
+
 ### 文章改名
 
 注意md文档中开头的配置内容中的title只是决定blog网页中打开该文章后最上面的title显示什么，要想修改blog主页中文章的标题需要修改.md文件名，同时对同名文件夹也要进行同样的修改。
