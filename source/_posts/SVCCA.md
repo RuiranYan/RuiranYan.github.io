@@ -86,13 +86,13 @@ answer several questions.
 
 ### algorithm
 
-for given dataset $X = {x_1,\cdots ,x_m}$ 和第$l$ 曾的一个神经元$i$，定义：
+for given dataset $X = {x_1,\cdots ,x_m}$ 和第 $l$ 层的一个神经元$i$，定义：
 $$
 z_i^l = (z_i^l(x_1), \cdots , z_i^l(x_m))
 $$
 
 * **INPUT:** 两个隐藏层的$z_i$，$l_1 = \{z_1^{l_1}.\cdots,z_{m_1}^{l_1}\}$ 和 $l_2 = \{z_1^{l_2}.\cdots,z_{m_2}^{l_2}\}$
-* **STEP 1:** 对$l_1,l_2$ SVD分解保留99%的主成分，得到$l_1',l_2'$
+* **STEP 1:** 对$l_1,l_2$ SVD分解保留99%的主成分，得到$l_1',l_2'$ 
 * **STEP 2: ** 对$l_1',l_2'$ 计算CCA
 * **OUTPUT: **输出线性变换后的对应向量和他们的相关系数
 
