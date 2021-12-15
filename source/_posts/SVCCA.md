@@ -32,7 +32,7 @@ $$
 $$
 \frac{\left\langle w^{T} L_{1}, s^{T} L_{2}\right\rangle}{\left\|w^{T} L_{1}\right\| \cdot\left\|s^{T} L_{2}\right\|}=\frac{w^{T} \Sigma_{L_{1}, L_{2}} s}{\sqrt{w^{T} \Sigma_{L_{1}, L_{1}} w} \sqrt{s^{T} \Sigma_{L_{2}, L_{2}} s}}
 $$
-进行基变换，令$w = \Sigma_{L_1,L_1}^{-1/2},s = \Sigma_{L_2,L_2}^{-1/2}$，有
+进行基变换，令$w = \Sigma_{L_1,L_1}^{-1/2}u,s = \Sigma_{L_2,L_2}^{-1/2}v$，有
 $$
 \frac{w^{T} \Sigma_{L_{1}, L_{2}} s}{\sqrt{w^{T} \Sigma_{L_{1}, L_{1}} w} \sqrt{s^{T} \Sigma_{L_{2}, L_{2}} s}}
 =
@@ -169,7 +169,7 @@ method: replace $Wx$ with $(WP^T_x)(P_xx)$ ，$P_x$ 是一个k*n的投影矩阵
 * SVCCA是一个能比较不同网络层与结构能学到的表征的方法
 * 通过SVCCA我们对常见的神经网络结构的学习动态与学习表征有了新见解——自底向上地学习
 * 我们发明了一种freeze training的技术，能减少训练网络时的计算甚至能提升网络的效果
-* CCA相似度是一个很好的解释性工具，因为塔他对不同的类能反映出它语义属性
+* CCA相似度是一个很好的解释性工具，因为他对不同的类能反映出它语义属性
 * 我们还能用SVCCA进行模型的压缩
 
 # 续篇：Insights on representational similarity in neural networks with canonical norrelation(PWCCA)
