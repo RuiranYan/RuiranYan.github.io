@@ -94,7 +94,7 @@ $$
 * **INPUT:** 两个隐藏层的$z_i$，$l_1 = \{z_1^{l_1}.\cdots,z_{m_1}^{l_1}\}$ 和 $l_2 = \{z_1^{l_2}.\cdots,z_{m_2}^{l_2}\}$
 * **STEP 1:** 对$l_1,l_2$ SVD分解保留99%的主成分，得到$l_1',l_2'$ 
 * **STEP 2:** 对$l_1',l_2'$ 计算CCA
-* **OUTPUT:**输出线性变换后的对应向量和他们的相关系数
+* **OUTPUT:** 输出线性变换后的对应向量和他们的相关系数
 
 细节见数学相关知识。
 
@@ -204,11 +204,11 @@ $$
 
 ### Generalizing networks converge to more similar solutions than memorizing networks
 
-**Generalizing networks：**用真实标签训练的网络。
+**Generalizing networks：** 用真实标签训练的网络。
 
-**memorizing networks：**随机标签训练的网络
+**memorizing networks：** 随机标签训练的网络
 
-**inter：**随机标签和真实标签一起训练的网络
+**inter： **随机标签和真实标签一起训练的网络
 
 训练了5组相同结构的网络，比较每组之间的PWCCA
 

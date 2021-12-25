@@ -1,5 +1,5 @@
 ---
-title: Embedding-Watermarks-into-Deep-Neural-Networks
+title: Embedding Watermarks into DNN
 date: 2021-10-08 22:23:09
 categories:
 - 学习
