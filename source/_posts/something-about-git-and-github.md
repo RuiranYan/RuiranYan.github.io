@@ -20,6 +20,7 @@ tags:
 * hexo相关(100%)
 * detailed intro of github (include change private repo to public repo, delete repo)(0%)
 * git重构(100%)
+* 一些奇妙小BUG(未完待续)
 
 ## 写在前面的话
 
@@ -137,7 +138,25 @@ hexo blog就是基于github，详情可见我的另一篇介绍hexo的blog。
 
 虽然这是必备技巧，但希望大家永远遇不到使用它的这一天。
 
+## 一些奇妙小BUG
 
+### git-ssh: connect to host github.com port 22: Connection timed out
+
+端口问题，通过`ssh -T -p 443 git@ssh.github.com`测试443端口是否可用，然后编辑`~/.ssh/config`文件，如果没有就创建一个，加入以下内容
+
+```
+Host github.com
+Hostname ssh.github.com
+Port 443
+```
+
+再次测试`ssh -T git@github.com`，如果i有`Hi,xxx!...`就成功了。
+
+### win10github文件路径如果有冒号会报错找不到文件路径
+
+git clone后会发现只有一个.git文件，再该目录下依次输入`git reset`，`git config core.protectNTFS false`，`git checkout *`就能有文件了，不过错误的文件还是没有，可以手动下载添加。
+
+目前没有找到其他方法能够下载带冒号的文件(win10sb)，有待完善。
 
 
 
