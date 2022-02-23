@@ -5,10 +5,13 @@ categories:
 - 学习
 tags:
 - paper
+- ml
 - watermark
 ---
 
 <div align='center' ><font size='6'>Embedding-Watermarks-into-Deep-Neural-Networks导读与复现</font></div>
+
+# 导读
 
 **Abstract：** Significant progress has been made with deep neural networks recently. Sharing trained models of deep neural networks has been a very important in the rapid progress of research and development of these systems. At the same time, it is necessary to protect the rights to shared trained models. To this end, we propose to use digital watermarking technology to protect intellectual property and detect intellectual property infringement in the use of trained models. First, we formulate a new problem: embedding watermarks into deep neural networks. We also define requirements, embedding situations, and attack types on watermarking in deep neural networks. Second, we propose a general framework for embedding a watermark in model parameters, using a parameter regularizer. Our approach does not impair the performance of networks into which a watermark is placed because the watermark is embedded while training the host network. Finally, we perform comprehensive experiments to reveal the potential of watermarking deep neural networks as the basis of this new research effort. We show that our framework can embed a watermark during the training of a deep neural network from scratch, and during fine-tuning and distilling, without impairing its performance. The embedded watermark does not disappear even after fine-tuning or parameter pruning; the watermark remains complete even after 65% of parameters are pruned.
 
@@ -34,11 +37,11 @@ task: 加入一个 **T** bit的0/1向量 $b\in \{0,1\}^T$ 到网络模型中。�
 
 接下来根据introduction我们定义需求场景和攻击类型。
 
-#### 需求：
+### 需求：
 
 将模型水印和视频水印进行类比，面对finetuning和transfer learning的模型修改方式要又不变性。
 
-#### 编入水印的场景：
+### 编入水印的场景：
 
 * 训练时编入（从头训练刚开始就编入）
 * finetune时编入（网络已经被pretrain过，只有靠近输出层的参数会改变）
@@ -180,3 +183,7 @@ $$
 * 网络态射后鲁棒性(我也不懂啥叫network morphism....)
 * steganalysis的鲁棒性(我也不懂啥是steganalysis)
 * fingerprinting: 类比video等，fingerprinting也是一个很好的方向去探究。
+
+# 复现
+
+本人对paper进行了复现，复现并不复杂，只是在loss后面加一项其他与之前的训练过程相同。但要注意一些细节，比如水印bit数不能超过参数个数(本人一开始设很大然后就炸了...)，具体代码之后可能会放到我的github上，敬请期待。
