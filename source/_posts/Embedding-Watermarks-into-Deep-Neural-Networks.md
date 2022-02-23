@@ -83,5 +83,100 @@ $$
 
 ## 实验
 
-咕咕咕......
+首先介绍了所用数据集、host network、所用参数(水印为全1向量、lambda取值)、水印嵌入位置等。
 
+### test error and training loss
+
+比较不同的X，得到loss曲线，如下图所示：
+
+![img](./Embedding-Watermarks-into-Deep-Neural-Networks/F1.png)
+
+同时记录不同方法test error(%)，如下表所示：
+
+![img](./Embedding-Watermarks-into-Deep-Neural-Networks/T4.png)
+
+### detecting watermarks
+
+记录了嵌入水印后 $\sigma(\sum_i X_{ji}w_i)$ 的分布柱状图与未嵌入水印进行对比(使用不同X)：
+
+![img](./Embedding-Watermarks-into-Deep-Neural-Networks/F2.png)
+
+通过分布的不同可以明显的甄别出模型是否嵌入水印。
+
+### 模型参数分布
+
+记录了不同X变换后模型参数的分布：
+
+![img](./Embedding-Watermarks-into-Deep-Neural-Networks/F3.png)
+
+可以看出使用$X^{random}$对参数分布的影响最小，同时根据之前的结果使用其的loss也比较小，所以一般采用该X进行变换。
+
+### Fine-tune-to-embed and Distill-to
+
+记录了embedding在不同场景下的表现：
+
+![img](./Embedding-Watermarks-into-Deep-Neural-Networks/T5.png)
+
+可以看出表现都很好，test error都很低。可见其对上述三种场景都有很好的适用性。
+
+### Capacity of Watermark
+
+通过加入不同大小的水印来测试容量(能加入最大而不影响效果的水印的大小)。
+
+注意原文中有句话：
+
+“the number of embedded bits should be smaller than the number of parameters w, which is a limitation of the embedding method using a single-layer perceptron”
+
+这句话也很好理解。
+
+本实验测试结果如下：
+
+![img](./Embedding-Watermarks-into-Deep-Neural-Networks/T6.png)
+
+###  Embedding without Training
+
+可以不重新训练就将水印嵌入，具体方法是重新设计E(w)：
+$$
+E(w) = \frac{1}{2}||w-w_0||_2^2 + \lambda E_R(w)
+$$
+这种设计方式也很好理解在最大程度不改变w的情况下让水印嵌入。
+
+实验结果如下：
+
+![img](./Embedding-Watermarks-into-Deep-Neural-Networks/T7.png)
+
+## Robustness of Embedded Watermarks
+
+主要讲了一下面对不同攻击水印鲁棒性
+
+### Robustness against Fine-tuning
+
+面对fine-tuning效果如下：
+
+![img](./Embedding-Watermarks-into-Deep-Neural-Networks/T8.png)
+
+可以看出基本不会影响水印。
+
+### Robustness against Model Compression
+
+主要就三张图
+
+![img](./Embedding-Watermarks-into-Deep-Neural-Networks/F5a.png)
+
+该图横座标是裁剪神经元的比例，Ascending和Descending表示去掉节点的规律是按其数值从大到小或从小到大的顺序进行裁剪。
+
+![img](./Embedding-Watermarks-into-Deep-Neural-Networks/F5b.png)
+
+该图与上图类似。
+
+![img](./Embedding-Watermarks-into-Deep-Neural-Networks/F6.png)
+
+最后一个图可以看出哪怕裁剪了80%甚至95%，仍能看出其参数分布有明显的偏向，也表示了该方法鲁棒性好。
+
+## Future Work
+
+* 水印重写的鲁棒性
+* 对不同压缩方法(本文只实验了直接裁剪pruning)的鲁棒性
+* 网络态射后鲁棒性(我也不懂啥叫network morphism....)
+* steganalysis的鲁棒性(我也不懂啥是steganalysis)
+* fingerprinting: 类比video等，fingerprinting也是一个很好的方向去探究。
