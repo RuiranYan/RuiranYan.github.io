@@ -122,6 +122,8 @@ git push
 
 **注意：**一定要先编写.gitignore再git add，**.gitignore也不能在子文件夹中，必须在根目录中，否则会无效**。`git rm -r --cached xxx`即是删除工作区的xxx，之后如果没有需求可以不用`git add .`，直接commit即可。当然，这样做的话后面再`git add .`的话就会又将xxx放入，所以建议先写.gitignore文件。
 
+**注意：**如果想删除某个具体文件如.zip文件，请使用`git rm --cache xxx`。
+
 ## hexo相关
 
 hexo blog就是基于github，详情可见我的另一篇介绍hexo的blog。

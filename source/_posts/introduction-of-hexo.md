@@ -216,7 +216,7 @@ tags:
 8. **在新系统上**，先安装好node.js git hexo环境，添加ssh key
 9. 选好要安装的目录 git clone远程仓库
 10. cd 到博客目录，npm install hexo，然后hexo init即可。
-11. **以后无论在哪台电脑上，更新以及提交博客，依次执行，git pull，git add -A ，git commit -m "--"，git push origin hexo，hexo clean && hexo g && hexo d 即可。**
+11. **以后无论在哪台电脑上，更新以及提交博客，依次执行，git pull，修改blog，git add -A ，git commit -m "--"，git push origin hexo，hexo clean && hexo g && hexo d 即可。**
 
 ### 文章改名
 
